@@ -9,5 +9,11 @@ Rails.application.routes.draw do
 
   resources :shouts, only: [:create, :show]
   resource :session, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show] do
+    member do
+      post "follow" => "following_relationships#create"
+      delete "unfollow" => "following_relationships#destroy"
+    end
+  end
+
 end
