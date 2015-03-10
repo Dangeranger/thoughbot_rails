@@ -19,12 +19,16 @@ class Shout < ActiveRecord::Base
   CONTENT_TYPES = DASHBOARD_TYPES
   default_scope { order(created_at: :desc) }
   belongs_to :user
-  belongs_to :content, polymorphic: true
+  belongs_to :content, polymorphic: true, dependent: :destroy
 
   delegate :username, to: :user
 
+  def self.reshouts
+    where(content_type: "Reshout")
+  end
+
   def self.reshouts_for(shout)
-    where(content_type: "Reshout", id: shout.id)
+    reshouts.joins("JOIN reshouts ON reshouts.shout_id = #{shout.id}")
   end
 
   def self.dashboard_types
