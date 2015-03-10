@@ -33,12 +33,12 @@ class User < ActiveRecord::Base
     followed_users << user
   end
 
-  def following?(user)
-    followed_users.where(id: user.id).exists?
-  end
-
   def unfollow(user)
     followed_users.destroy(user)
+  end
+
+  def following?(user)
+    followed_users.where(id: user.id).exists?
   end
 
   def can_follow?(user)

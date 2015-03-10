@@ -12,7 +12,7 @@ class ReshoutsController < ApplicationController
   private
 
   def find_shout
-    Shout.find(params[:shout])
+    Shout.find(params[:id])
   end
 
 end

@@ -18,7 +18,7 @@ class ShoutsController < ApplicationController
   end
 
   def shout_params
-    { content: build_content}
+    { content: build_content }
   end
 
   def build_content
