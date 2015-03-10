@@ -35,6 +35,10 @@ class Shout < ActiveRecord::Base
     where(content_type: DASHBOARD_TYPES)
   end
 
+  def self.without_reshouts_for_user(user)
+    where.not(content_type: "Reshout", user: user)
+  end
+
   def new_reshout
     Reshout.new(shout: self)
   end
