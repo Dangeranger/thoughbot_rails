@@ -2,8 +2,8 @@
   <%= form.text_field :body, placeholder: "Shout Here!" %>
 <% end %>
 
-<%= shout_form_for(TextShout) do |form| %>
-  <%= form.text_field :body, placeholder: "Shout Here!" %>
+<%= shout_form_for(PhotoShout) do |form| %>
+  <%= form.file_field :photo %>
 <% end %>
 
 <%= render @dashboard.shouts %>

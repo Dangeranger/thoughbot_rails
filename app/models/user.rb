@@ -59,5 +59,6 @@ class User < ActiveRecord::Base
   end
 
   def undo_reshout(shout)
+    # shouts.joins(:content).where(content_type: "Reshout", shout_id: shout.id)
   end
 end

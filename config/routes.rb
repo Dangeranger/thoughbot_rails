@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   resources :shouts, only: [:create] do
     member do
-      post "reshout" => "reshout#create"
-      delete "unreshout" => "reshout#destroy"
+      post "reshout" => "reshouts#create"
+      delete "unreshout" => "reshouts#destroy"
     end
   end
 
