@@ -6,8 +6,8 @@ class Dashboard
 
   def shouts
     Shout.
-    dashboard_types.
-    where(user_id: timeline_ids)
+      dashboard_types.
+      where(user_id: timeline_ids)
   end
 
   private

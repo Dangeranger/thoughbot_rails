@@ -37,12 +37,12 @@ class User < ActiveRecord::Base
     followed_users.destroy(user)
   end
 
-  def following?(user)
-    followed_users.where(id: user.id).exists?
-  end
-
   def can_follow?(user)
     user.id != id
+  end
+
+  def following?(user)
+    followed_users.where(id: user.id).exists?
   end
 
   def reshouted?(shout)
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
   end
 
   def reshout(shout)
-    reshout = shout.new_reshout(shout: shout)
+    reshout = shout.new_reshout
     shouts.create(content: reshout)
   end
 
