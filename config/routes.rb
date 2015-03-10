@@ -7,7 +7,13 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-  resources :shouts, only: [:create, :show]
+  resources :shouts, only: [:create, :show] do
+    member do
+      post "reshout" => "reshout#create"
+      delete "unreshout" => "reshout#destroy"
+    end
+  end
+
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show] do
     member do

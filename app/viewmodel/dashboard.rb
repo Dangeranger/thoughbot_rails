@@ -5,7 +5,9 @@ class Dashboard
   end
 
   def shouts
-    Shout.where(user_id: timeline_ids)
+    Shout.
+    dashboard_types.
+    where(user_id: timeline_ids)
   end
 
   private

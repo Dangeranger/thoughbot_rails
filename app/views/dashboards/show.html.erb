@@ -1,9 +1,12 @@
 <%= form_for Shout.new do |form| %>
-  <%= form.fields_for(:content) do |content_form| %>
+  <%= form.fields_for :content do |content_form| %>
     <%= content_form.text_field :body, placeholder: "Shout here!" %>
   <% end %>
   <%= form.hidden_field :content_type, value: "TextShout" %>
   <%= form.submit "Shout" %>
+  <%= shout_form_for(TextShout) do |form| %>
+    <%= form.text_field :body, placeholder: "Shout Here!" %>
+  <% end %>
 <% end %>
 
 <%= form_for Shout.new do |form| %>
@@ -12,6 +15,9 @@
   <% end %>
   <%= form.hidden_field :content_type, value: "PhotoShout" %>
   <%= form.submit "Shout" %>
-<% end %>
+  <%= shout_form_for(TextShout) do |form| %>
+    <%= form.text_field :body, placeholder: "Shout Here!" %>
+  <% end %>
+<% end %> %>
 
 <%= render @dashboard.shouts %>

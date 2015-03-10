@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  email           :string           not null
+#  username        :string           not null
+#  password_digest :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ActiveRecord::Base
   has_many :shouts
 
@@ -31,5 +43,21 @@ class User < ActiveRecord::Base
 
   def can_follow?(user)
     user.id != id
+  end
+
+  def reshouted?(shout)
+    shouts.reshouts_for(shout).exists?
+  end
+
+  def owns?(object)
+    object.user_id == id
+  end
+
+  def reshout(shout)
+    reshout = shout.new_reshout(shout: shout)
+    shouts.create(content: reshout)
+  end
+
+  def undo_reshout(shout)
   end
 end
