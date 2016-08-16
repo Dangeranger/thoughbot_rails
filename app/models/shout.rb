@@ -13,8 +13,12 @@
 class Shout < ActiveRecord::Base
   DASHBOARD_TYPES = [
     TextShout,
-    PhotoShout,
-  ]
+    PhotoShout
+  ].freeze
+
+  searchable do
+    text(:content) { content.index_content }
+  end
 
   CONTENT_TYPES = DASHBOARD_TYPES
   default_scope { order(created_at: :desc) }
@@ -24,7 +28,7 @@ class Shout < ActiveRecord::Base
   delegate :username, to: :user
 
   def self.reshouts
-    where(content_type: "Reshout")
+    where(content_type: 'Reshout')
   end
 
   def self.reshouts_for(shout)
@@ -36,11 +40,10 @@ class Shout < ActiveRecord::Base
   end
 
   def self.without_reshouts_for_user(user)
-    where.not(content_type: "Reshout", user: user)
+    where.not(content_type: 'Reshout', user: user)
   end
 
   def new_reshout
     Reshout.new(shout: self)
   end
-
 end

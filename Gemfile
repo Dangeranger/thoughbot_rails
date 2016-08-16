@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'monban'
 gem 'paperclip'
-gem 'sunspot-rails'
+gem 'sunspot_rails'
 
 group :development, :test do
   gem 'quiet_assets'
@@ -20,4 +20,5 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'annotate'
+  gem 'sunspot_solr'
 end
